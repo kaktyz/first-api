@@ -1,5 +1,4 @@
 <?php
-
 // Избегаем проблем с CORS
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
@@ -10,6 +9,7 @@ header('Content-Type: application/json');
 require 'connect.php';
 require 'function.php';
 
-$type = $_GET['q']; 
+$type = $_GET['q'];
 
-if ($type === 'posts') getPosts($connect);
+if ($type === 'orders') getPosts($connect);
+

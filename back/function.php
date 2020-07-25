@@ -1,10 +1,14 @@
 <?php
 
+/**
+ * @param $connect подключение к базе
+ * возвращаем массив всех имеющихся заказов
+ */
 function getPosts($connect){
-    $posts = mysqli_query($connect, "SELECT * FROM `products`");
-    $postsList = [];
-    while ($post = mysqli_fetch_assoc($posts)) {
-        $postsList[] = $post;
+    $orders = mysqli_query($connect, "SELECT * FROM `orders`");
+    $ordersList = [];
+    while ($order = mysqli_fetch_assoc($orders)) {
+        $ordersList[] = $order;
     }
-    echo json_encode($postsList);
+    return $ordersList[1];
 }

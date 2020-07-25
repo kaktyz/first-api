@@ -1,16 +1,26 @@
 async function getPosts() {
-    let res = await fetch('http://jsonplaceholder.typicode.com/posts');
-    let posts = await res.json(); 
 
+    let res = await fetch('http://127.0.0.1/orders');
+                
+                console.log(res)
+                let orders = await res.json();
+                var isJson = true;
+                try {
+                    JSON.parse(orders);
+                } catch(e) {
+                    isJson = false;
+                    console.log(e);
+                }
 
-    posts.forEach(post => {
-        console.log('foreach')
+    orders.forEach(order => {
+        console.log(`Айдишник заказа ${order.id}`);
         document.querySelector('.post-list').innerHTML += `
         <div class="card">
-            <div class="card-body">${post.body}</div>
+            <div class="card-body">${order.id}</div>
         </div>
         `
     });
 
 }
+
 getPosts();

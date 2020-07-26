@@ -1,19 +1,11 @@
-async function getPosts() {
+async function getOrders() {
 
     let res = await fetch('http://127.0.0.1/orders');
-                
-                console.log(res)
-                let orders = await res.json();
-                var isJson = true;
-                try {
-                    JSON.parse(orders);
-                } catch(e) {
-                    isJson = false;
-                    console.log(e);
-                }
+    // let res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    let orders = await res.json();
 
+    // Выводим заказы в виде карт
     orders.forEach(order => {
-        console.log(`Айдишник заказа ${order.id}`);
         document.querySelector('.post-list').innerHTML += `
         <div class="card">
             <div class="card-body">${order.id}</div>
@@ -22,5 +14,5 @@ async function getPosts() {
     });
 
 }
+getOrders(); 
 
-getPosts();
